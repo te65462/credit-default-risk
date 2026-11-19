@@ -5,11 +5,16 @@
 The last GitHub Actions job runs this after every deployment. A static Space is served from
 https://<subdomain>.static.hf.space/, and the subdomain comes from the Hub API. The Space can take
 a little while to update, so the check repeats until every file matches or the time runs out.
-Only the Python standard library is used.
+
+Hugging Face adds two things to every HTML page it serves: a short script right after <head>
+(window.huggingface = {...}) and social-media <meta> tags (og:... and twitter:...) right before
+</head>. The check removes exactly these additions from index.html before comparing; every other
+byte of every file must match. Only the Python standard library is used.
 """
 import argparse
 import hashlib
 import json
+import re
 import sys
 import time
 import urllib.error
@@ -18,6 +23,17 @@ from pathlib import Path
 
 SPACE_DIR = Path(__file__).resolve().parents[1] / "space"
 SERVED = ["index.html", "style.css", "app.js", "predictor.py", "model/model_info.json", "model/catboost_model.py"]
+
+# What Hugging Face adds to the HTML pages of a static Space (seen on the first deployment).
+HF_SCRIPT = re.compile(rb"(?<=<head>)<script>window\.huggingface=[^<]*</script>")
+HF_META = re.compile(rb"(?:<meta (?:property=\"og:|name=\"twitter:)[^>]*>)+(?=</head>)")
+
+
+def without_hf_additions(name, body):
+    """Remove what Hugging Face adds to a served HTML page; other files are returned unchanged."""
+    if not name.endswith(".html"):
+        return body
+    return HF_META.sub(b"", HF_SCRIPT.sub(b"", body, count=1), count=1)
 
 
 def download(url):
@@ -46,10 +62,11 @@ def main():
             except urllib.error.URLError as err:
                 waiting.append(f"{name} ({err})")
                 continue
-            if hashlib.sha256(served).hexdigest() != expected[name]:
+            if hashlib.sha256(without_hf_additions(name, served)).hexdigest() != expected[name]:
                 waiting.append(name)
         if not waiting:
-            print(f"OK: the live Space serves all {len(SERVED)} files of this commit, byte for byte.")
+            print(f"OK: the live Space serves all {len(SERVED)} files of this commit, byte for byte "
+                  "(after removing what Hugging Face adds to index.html).")
             return 0
         if time.monotonic() > deadline:
             print(f"FAILED after {args.timeout} s; still different or missing: {', '.join(waiting)}")
