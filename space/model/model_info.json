@@ -1,0 +1,600 @@
+{
+  "title": "Credit card default risk",
+  "threshold": 0.2664011206279604,
+  "features": [
+    {
+      "name": "LIMIT_BAL",
+      "label": "Credit limit",
+      "unit": "NT$",
+      "group": "client",
+      "kind": "number",
+      "valid": {
+        "min": 1
+      },
+      "training_range": [
+        10000.0,
+        1000000.0
+      ]
+    },
+    {
+      "name": "SEX",
+      "label": "Sex",
+      "group": "client",
+      "kind": "category",
+      "codes": {
+        "1": "Male",
+        "2": "Female"
+      },
+      "whole": true,
+      "valid": {}
+    },
+    {
+      "name": "EDUCATION",
+      "label": "Education",
+      "group": "client",
+      "kind": "category",
+      "codes": {
+        "1": "Graduate school",
+        "2": "University",
+        "3": "High school",
+        "4": "Others"
+      },
+      "merged_codes": {
+        "0": 4,
+        "5": 4,
+        "6": 4
+      },
+      "whole": true,
+      "valid": {}
+    },
+    {
+      "name": "MARRIAGE",
+      "label": "Marital status",
+      "group": "client",
+      "kind": "category",
+      "codes": {
+        "1": "Married",
+        "2": "Single",
+        "3": "Others"
+      },
+      "merged_codes": {
+        "0": 3
+      },
+      "whole": true,
+      "valid": {}
+    },
+    {
+      "name": "AGE",
+      "label": "Age",
+      "unit": "years",
+      "group": "client",
+      "kind": "number",
+      "whole": true,
+      "valid": {
+        "min": 18,
+        "max": 100
+      },
+      "training_range": [
+        21.0,
+        79.0
+      ]
+    },
+    {
+      "name": "PAY_1",
+      "label": "Repayment status, September 2005",
+      "group": "status",
+      "kind": "status",
+      "whole": true,
+      "codes": {
+        "-2": "−2 · undocumented code",
+        "-1": "−1 · paid on time",
+        "0": "0 · undocumented code",
+        "1": "1 · 1 month late",
+        "2": "2 · 2 months late",
+        "3": "3 · 3 months late",
+        "4": "4 · 4 months late",
+        "5": "5 · 5 months late",
+        "6": "6 · 6 months late",
+        "7": "7 · 7 months late",
+        "8": "8 · 8 months late"
+      },
+      "training_codes": [
+        -2,
+        -1,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "valid": {}
+    },
+    {
+      "name": "PAY_2",
+      "label": "Repayment status, August 2005",
+      "group": "status",
+      "kind": "status",
+      "whole": true,
+      "codes": {
+        "-2": "−2 · undocumented code",
+        "-1": "−1 · paid on time",
+        "0": "0 · undocumented code",
+        "1": "1 · 1 month late",
+        "2": "2 · 2 months late",
+        "3": "3 · 3 months late",
+        "4": "4 · 4 months late",
+        "5": "5 · 5 months late",
+        "6": "6 · 6 months late",
+        "7": "7 · 7 months late",
+        "8": "8 · 8 months late"
+      },
+      "training_codes": [
+        -2,
+        -1,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "valid": {}
+    },
+    {
+      "name": "PAY_3",
+      "label": "Repayment status, July 2005",
+      "group": "status",
+      "kind": "status",
+      "whole": true,
+      "codes": {
+        "-2": "−2 · undocumented code",
+        "-1": "−1 · paid on time",
+        "0": "0 · undocumented code",
+        "1": "1 · 1 month late",
+        "2": "2 · 2 months late",
+        "3": "3 · 3 months late",
+        "4": "4 · 4 months late",
+        "5": "5 · 5 months late",
+        "6": "6 · 6 months late",
+        "7": "7 · 7 months late",
+        "8": "8 · 8 months late"
+      },
+      "training_codes": [
+        -2,
+        -1,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "valid": {}
+    },
+    {
+      "name": "PAY_4",
+      "label": "Repayment status, June 2005",
+      "group": "status",
+      "kind": "status",
+      "whole": true,
+      "codes": {
+        "-2": "−2 · undocumented code",
+        "-1": "−1 · paid on time",
+        "0": "0 · undocumented code",
+        "1": "1 · 1 month late",
+        "2": "2 · 2 months late",
+        "3": "3 · 3 months late",
+        "4": "4 · 4 months late",
+        "5": "5 · 5 months late",
+        "6": "6 · 6 months late",
+        "7": "7 · 7 months late",
+        "8": "8 · 8 months late"
+      },
+      "training_codes": [
+        -2,
+        -1,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "valid": {}
+    },
+    {
+      "name": "PAY_5",
+      "label": "Repayment status, May 2005",
+      "group": "status",
+      "kind": "status",
+      "whole": true,
+      "codes": {
+        "-2": "−2 · undocumented code",
+        "-1": "−1 · paid on time",
+        "0": "0 · undocumented code",
+        "1": "1 · 1 month late",
+        "2": "2 · 2 months late",
+        "3": "3 · 3 months late",
+        "4": "4 · 4 months late",
+        "5": "5 · 5 months late",
+        "6": "6 · 6 months late",
+        "7": "7 · 7 months late",
+        "8": "8 · 8 months late"
+      },
+      "training_codes": [
+        -2,
+        -1,
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "valid": {}
+    },
+    {
+      "name": "PAY_6",
+      "label": "Repayment status, April 2005",
+      "group": "status",
+      "kind": "status",
+      "whole": true,
+      "codes": {
+        "-2": "−2 · undocumented code",
+        "-1": "−1 · paid on time",
+        "0": "0 · undocumented code",
+        "1": "1 · 1 month late",
+        "2": "2 · 2 months late",
+        "3": "3 · 3 months late",
+        "4": "4 · 4 months late",
+        "5": "5 · 5 months late",
+        "6": "6 · 6 months late",
+        "7": "7 · 7 months late",
+        "8": "8 · 8 months late"
+      },
+      "training_codes": [
+        -2,
+        -1,
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "valid": {}
+    },
+    {
+      "name": "BILL_AMT1",
+      "label": "Bill amount, September 2005",
+      "unit": "NT$",
+      "group": "bills",
+      "kind": "number",
+      "valid": {},
+      "training_range": [
+        -154973.0,
+        964511.0
+      ]
+    },
+    {
+      "name": "BILL_AMT2",
+      "label": "Bill amount, August 2005",
+      "unit": "NT$",
+      "group": "bills",
+      "kind": "number",
+      "valid": {},
+      "training_range": [
+        -69777.0,
+        983931.0
+      ]
+    },
+    {
+      "name": "BILL_AMT3",
+      "label": "Bill amount, July 2005",
+      "unit": "NT$",
+      "group": "bills",
+      "kind": "number",
+      "valid": {},
+      "training_range": [
+        -157264.0,
+        1664089.0
+      ]
+    },
+    {
+      "name": "BILL_AMT4",
+      "label": "Bill amount, June 2005",
+      "unit": "NT$",
+      "group": "bills",
+      "kind": "number",
+      "valid": {},
+      "training_range": [
+        -170000.0,
+        891586.0
+      ]
+    },
+    {
+      "name": "BILL_AMT5",
+      "label": "Bill amount, May 2005",
+      "unit": "NT$",
+      "group": "bills",
+      "kind": "number",
+      "valid": {},
+      "training_range": [
+        -81334.0,
+        927171.0
+      ]
+    },
+    {
+      "name": "BILL_AMT6",
+      "label": "Bill amount, April 2005",
+      "unit": "NT$",
+      "group": "bills",
+      "kind": "number",
+      "valid": {},
+      "training_range": [
+        -339603.0,
+        961664.0
+      ]
+    },
+    {
+      "name": "PAY_AMT1",
+      "label": "Amount paid, September 2005",
+      "unit": "NT$",
+      "group": "payments",
+      "kind": "number",
+      "valid": {
+        "min": 0
+      },
+      "training_range": [
+        0.0,
+        873552.0
+      ]
+    },
+    {
+      "name": "PAY_AMT2",
+      "label": "Amount paid, August 2005",
+      "unit": "NT$",
+      "group": "payments",
+      "kind": "number",
+      "valid": {
+        "min": 0
+      },
+      "training_range": [
+        0.0,
+        1684259.0
+      ]
+    },
+    {
+      "name": "PAY_AMT3",
+      "label": "Amount paid, July 2005",
+      "unit": "NT$",
+      "group": "payments",
+      "kind": "number",
+      "valid": {
+        "min": 0
+      },
+      "training_range": [
+        0.0,
+        896040.0
+      ]
+    },
+    {
+      "name": "PAY_AMT4",
+      "label": "Amount paid, June 2005",
+      "unit": "NT$",
+      "group": "payments",
+      "kind": "number",
+      "valid": {
+        "min": 0
+      },
+      "training_range": [
+        0.0,
+        621000.0
+      ]
+    },
+    {
+      "name": "PAY_AMT5",
+      "label": "Amount paid, May 2005",
+      "unit": "NT$",
+      "group": "payments",
+      "kind": "number",
+      "valid": {
+        "min": 0
+      },
+      "training_range": [
+        0.0,
+        426529.0
+      ]
+    },
+    {
+      "name": "PAY_AMT6",
+      "label": "Amount paid, April 2005",
+      "unit": "NT$",
+      "group": "payments",
+      "kind": "number",
+      "valid": {
+        "min": 0
+      },
+      "training_range": [
+        0.0,
+        528666.0
+      ]
+    }
+  ],
+  "groups": {
+    "client": "Client",
+    "status": "Repayment status, April–September 2005",
+    "bills": "Bill statement amounts (NT$)",
+    "payments": "Amounts paid (NT$)"
+  },
+  "model": {
+    "name": "CatBoost, tuned in Module 8",
+    "trees": 468,
+    "trees_built": 568,
+    "depth": 8,
+    "learning_rate": 0.03,
+    "l2_leaf_reg": 10,
+    "boosting_type": "Plain",
+    "grow_policy": "SymmetricTree",
+    "learned_from_clients": 21600,
+    "early_stopping_clients": 2400,
+    "early_stopping_patience": 100,
+    "catboost_version": "1.2.10",
+    "source_file": "model_source/catboost_tuned.cbm",
+    "source_sha256": "92a499ee7ccbc79df8834a5cb326575bbdcbbd23e335f2b2e0ccf08dab71e209",
+    "exported_file": "space/model/catboost_model.py",
+    "exported_sha256": "ef628a0669c252082f4f9ea85458c5a32c252dbb844033b2e80c9d024c2aea55"
+  },
+  "test_results": {
+    "clients": 6000,
+    "defaulters": 1337,
+    "roc_auc": 0.7890589373753594,
+    "average_precision": 0.5680780857544254,
+    "at_threshold": {
+      "threshold": 0.2664011206279604,
+      "flagged": 1509,
+      "TP": 790,
+      "FP": 719,
+      "FN": 547,
+      "TN": 3944,
+      "accuracy": 0.789,
+      "precision": 0.5235255135851558,
+      "recall": 0.5908750934928946,
+      "f1": 0.5551651440618411
+    },
+    "at_0.5": {
+      "threshold": 0.5,
+      "flagged": 754,
+      "TP": 511,
+      "FP": 243,
+      "FN": 826,
+      "TN": 4420,
+      "accuracy": 0.8218333333333333,
+      "precision": 0.6777188328912467,
+      "recall": 0.38219895287958117,
+      "f1": 0.4887613582018173
+    }
+  },
+  "data": {
+    "name": "Default of Credit Card Clients",
+    "source": "UCI Machine Learning Repository",
+    "doi": "https://doi.org/10.24432/C55S3H",
+    "clients": 30000,
+    "period": "April–September 2005",
+    "train_clients": 24000,
+    "test_clients": 6000,
+    "split": "random 80/20, seed 20 (saved client IDs)"
+  },
+  "examples": [
+    {
+      "label": "Lower risk",
+      "test_client_id": 4187,
+      "values": {
+        "LIMIT_BAL": 180000,
+        "SEX": 1,
+        "EDUCATION": 3,
+        "MARRIAGE": 2,
+        "AGE": 46,
+        "PAY_1": 0,
+        "PAY_2": 0,
+        "PAY_3": 0,
+        "PAY_4": 0,
+        "PAY_5": 0,
+        "PAY_6": 0,
+        "BILL_AMT1": 109114,
+        "BILL_AMT2": 71952,
+        "BILL_AMT3": 16765,
+        "BILL_AMT4": 14611,
+        "BILL_AMT5": 16209,
+        "BILL_AMT6": 25653,
+        "PAY_AMT1": 2835,
+        "PAY_AMT2": 1500,
+        "PAY_AMT3": 1000,
+        "PAY_AMT4": 2000,
+        "PAY_AMT5": 10000,
+        "PAY_AMT6": 20000
+      },
+      "module8_risk": 0.07999697206546458,
+      "defaulted": false
+    },
+    {
+      "label": "Just above the threshold",
+      "test_client_id": 8185,
+      "values": {
+        "LIMIT_BAL": 50000,
+        "SEX": 2,
+        "EDUCATION": 3,
+        "MARRIAGE": 2,
+        "AGE": 58,
+        "PAY_1": 1,
+        "PAY_2": -1,
+        "PAY_3": 2,
+        "PAY_4": 0,
+        "PAY_5": 0,
+        "PAY_6": 0,
+        "BILL_AMT1": 0,
+        "BILL_AMT2": 9587,
+        "BILL_AMT3": 8845,
+        "BILL_AMT4": 8867,
+        "BILL_AMT5": 9074,
+        "BILL_AMT6": 9254,
+        "PAY_AMT1": 10587,
+        "PAY_AMT2": 331,
+        "PAY_AMT3": 317,
+        "PAY_AMT4": 350,
+        "PAY_AMT5": 331,
+        "PAY_AMT6": 500
+      },
+      "module8_risk": 0.28009470805171893,
+      "defaulted": false
+    },
+    {
+      "label": "Higher risk",
+      "test_client_id": 29756,
+      "values": {
+        "LIMIT_BAL": 80000,
+        "SEX": 1,
+        "EDUCATION": 3,
+        "MARRIAGE": 1,
+        "AGE": 43,
+        "PAY_1": 2,
+        "PAY_2": -1,
+        "PAY_3": -1,
+        "PAY_4": 2,
+        "PAY_5": -1,
+        "PAY_6": -1,
+        "BILL_AMT1": 1473,
+        "BILL_AMT2": 1473,
+        "BILL_AMT3": 3133,
+        "BILL_AMT4": 1473,
+        "BILL_AMT5": 1473,
+        "BILL_AMT6": 390,
+        "PAY_AMT1": 1473,
+        "PAY_AMT2": 3133,
+        "PAY_AMT3": 0,
+        "PAY_AMT4": 1473,
+        "PAY_AMT5": 390,
+        "PAY_AMT6": 390
+      },
+      "module8_risk": 0.7000165248324481,
+      "defaulted": false
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Credit Card Default Risk</title>
+  <meta name="description" content="Estimates the chance that a credit card client defaults next month, using the CatBoost model tuned in Module 8. The model runs in your browser.">
+  <link rel="stylesheet" href="style.css">
+  <!-- Pyodide runs Python in the browser. The version is pinned, and the integrity hash makes the
+       browser refuse a changed copy of the loader script. -->
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.29.5/full/pyodide.js"
+          integrity="sha384-VR47TfKeAmT7vMej7bwOVg0tHTQLLGMSIpsXtFMCZG5OpKZSIXoSLtGY//qHcxc6"
+          crossorigin="anonymous" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <p class="eyebrow">Coursework demo · CatBoost model tuned in Module 8</p>
+      <h1>Credit card default risk</h1>
+      <p class="lede">Enter a client's profile and the last six months of repayment status, bills and payments.
+        The page estimates the chance that the client <strong>defaults</strong>, that is, does not make
+        next month's payment.</p>
+      <p class="privacy">The model runs inside your browser, so nothing you type is sent anywhere.</p>
+      <p id="status" class="status" role="status" data-state="loading">Loading the model in your browser…</p>
+      <noscript><p class="status" data-state="error">This page needs JavaScript to run the model.</p></noscript>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card" aria-labelledby="examples-title">
+      <h2 id="examples-title">Start from an example</h2>
+      <p class="hint">Three real clients from the 6,000-client test set. Pick one, change any value, then estimate.</p>
+      <div id="example-buttons" class="example-buttons"></div>
+    </section>
+
+    <form id="client-form" class="card" novalidate>
+      <h2>Client details</h2>
+      <div id="fields"></div>
+      <div class="actions">
+        <button id="estimate" type="submit" disabled>Estimate risk</button>
+        <span id="estimate-hint" class="hint">Available once the model has loaded.</span>
+      </div>
+      <div id="problems" class="problems" role="alert" hidden></div>
+    </form>
+
+    <section id="result" class="card result" aria-labelledby="result-title" hidden>
+      <h2 id="result-title" tabindex="-1">Estimated risk</h2>
+      <p class="risk"><span id="risk-value"></span> <span class="risk-label">chance of default next month</span></p>
+      <div class="meter" aria-hidden="true">
+        <div id="meter-fill" class="meter-fill"></div>
+        <div id="meter-mark" class="meter-mark"><span id="meter-mark-label"></span></div>
+      </div>
+      <p id="decision" class="decision"></p>
+      <ul id="notes" class="notes" hidden></ul>
+      <p id="example-outcome" class="hint" hidden></p>
+      <p id="context" class="context"></p>
+    </section>
+
+    <details class="card about">
+      <summary>About the model, the data and this page</summary>
+      <div id="about"></div>
+    </details>
+  </main>
+
+  <footer class="wrap footer">
+    <p>A coursework demonstration for a machine learning course, not a tool for real credit decisions.</p>
+  </footer>
+</body>
+</html>

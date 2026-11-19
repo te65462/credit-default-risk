@@ -1,0 +1,8 @@
+# Packages for the tests in GitHub Actions. The deployed page itself needs none of them:
+# predictor.py and the exported model are plain Python. The versions are the ones that trained
+# and evaluated the model in Module 8, so the tests compare like with like.
+catboost==1.2.10
+numpy==2.3.5
+pandas==2.3.3
+scikit-learn==1.7.2
+pytest==8.4.2
