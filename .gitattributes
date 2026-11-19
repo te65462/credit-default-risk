@@ -1,0 +1,4 @@
+# Store and check out every text file with Unix (LF) line endings on every computer, so a file is
+# byte-identical on Windows, in GitHub Actions and on the Space (model_info.json records hashes).
+* text=auto eol=lf
+*.cbm binary
